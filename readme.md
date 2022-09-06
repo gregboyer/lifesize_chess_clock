@@ -2,6 +2,12 @@ Purpose:
 
 Giant chess board games need giant chess clocks. Imagine playing on those very large (10ftx10ft) outdoor boards, but with added cardio, especially as time runs own. 
 
+Usage:
+- Hold button 4s to "power on" or "power off" clocks
+- Adjust clocks manually
+- Hit the button a single time when you've moved
+
+
 Setup:
 
 

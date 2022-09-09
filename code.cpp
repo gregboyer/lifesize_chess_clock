@@ -1,7 +1,12 @@
+// amount of time for each move before the clock starts. 
+// equivalent to Fischer time
+const int timePerMove = 4000;
+
 
 const int buttonPin = 2;     // the number of the pushbutton pin
-const int ledPin1 =  6; 
-const int ledPin2 =  5; 
+const int ledPin0 =  4;      // indicates that system is "on" and clocks are active
+const int ledPin1 =  5;      // indicate
+const int ledPin2 =  6; 
 
 
 int activeLed = ledPin1;
@@ -19,8 +24,9 @@ int activeLed = ledPin1;
   
 void setup(){
   pinMode(buttonPin,INPUT); // what does this do?
-  pinMode(ledPin2,OUTPUT);
+  pinMode(ledPin0,OUTPUT);
   pinMode(ledPin1,OUTPUT);
+  pinMode(ledPin2,OUTPUT);
   Serial.begin(9600);
 } 
 
@@ -81,21 +87,24 @@ bool onOff(bool onOffState) {
   // if clock is off turn on LED
   if (onOffState == 0) {
     for ( int x = 0; x < 3; x++ ) {
-      digitalWrite(activeLed, LOW);
+      
+      digitalWrite(ledPin0, LOW);
       delay(200);
-      digitalWrite(activeLed, HIGH);
+      digitalWrite(ledPin0, HIGH);
       delay(500);
       Serial.println("turn on");
     }
+    digitalWrite(activeLed, HIGH);
   } else { 
     // if clock is on turn off LED
     for ( int x = 0; x < 3; x++ ) {
-      digitalWrite(activeLed, HIGH);
+      digitalWrite(ledPin0, HIGH);
       delay(500);
-      digitalWrite(activeLed, LOW);
+      digitalWrite(ledPin0, LOW);
       delay(200);      
       Serial.println("turn off");
       }
+    digitalWrite(activeLed, LOW);
     }
   Serial.println(onOffState);
   onOffState = !onOffState;
@@ -106,3 +115,4 @@ bool onOff(bool onOffState) {
   
     
     
+
